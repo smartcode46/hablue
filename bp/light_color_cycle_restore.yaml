@@ -57,210 +57,210 @@ action:
       brightness_pct: 25
       rgb_color: [255, 255, 255]
 
-  # Start: 2 white flashes
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 255]
-      brightness_pct: 25
-  - delay: !input step_delay
+# Steps 1–2: white intro flashes at 75%
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 255, 255]
+    brightness_pct: 75
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 255]
-      brightness_pct: 25
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 255, 255]
+    brightness_pct: 75
+- delay: !input step_delay
 
-  # 10 color flashes increasing brightness
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 0, 0]
-      brightness_pct: 25
-  - delay: !input step_delay
+# Steps 3–13: increasing rainbow colors, 50% → 100%
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 0, 0]
+    brightness_pct: 50
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 80, 0]
-      brightness_pct: 33
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 80, 0]
+    brightness_pct: 55
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 160, 0]
-      brightness_pct: 41
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 160, 0]
+    brightness_pct: 60
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 0]
-      brightness_pct: 49
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 220, 0]
+    brightness_pct: 65
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [120, 255, 0]
-      brightness_pct: 57
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 255, 0]
+    brightness_pct: 70
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [0, 255, 0]
-      brightness_pct: 65
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [120, 255, 0]
+    brightness_pct: 75
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [0, 255, 160]
-      brightness_pct: 73
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 0]
+    brightness_pct: 80
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [0, 255, 255]
-      brightness_pct: 81
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 160]
+    brightness_pct: 85
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [0, 120, 255]
-      brightness_pct: 90
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 255]
+    brightness_pct: 90
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [0, 0, 255]
-      brightness_pct: 100
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 120, 255]
+    brightness_pct: 95
+- delay: !input step_delay
 
-  # Middle peak flash, makes total count 25
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 255]
-      brightness_pct: 100
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 0, 255]
+    brightness_pct: 100
+- delay: !input step_delay
 
-  # 10 color flashes decreasing brightness
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [80, 0, 255]
-      brightness_pct: 92
-  - delay: !input step_delay
+# Steps 14–16: green peak flashes at 100%
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 0]
+    brightness_pct: 100
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [140, 0, 255]
-      brightness_pct: 84
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 0]
+    brightness_pct: 100
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [200, 0, 255]
-      brightness_pct: 76
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [0, 255, 0]
+    brightness_pct: 100
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 0, 220]
-      brightness_pct: 68
-  - delay: !input step_delay
+# Steps 17–23: decreasing rainbow/pink colors, 100% → 50%
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [140, 0, 255]
+    brightness_pct: 100
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 0, 140]
-      brightness_pct: 60
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [180, 0, 255]
+    brightness_pct: 92
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 0, 80]
-      brightness_pct: 52
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 0, 255]
+    brightness_pct: 84
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 60, 120]
-      brightness_pct: 44
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 0, 180]
+    brightness_pct: 76
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 120, 160]
-      brightness_pct: 36
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 0, 120]
+    brightness_pct: 68
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 180, 200]
-      brightness_pct: 28
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 40, 80]
+    brightness_pct: 60
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 220, 230]
-      brightness_pct: 20
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 120, 180]
+    brightness_pct: 50
+- delay: !input step_delay
 
-  # Stop: 2 white flashes at 25%
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 255]
-      brightness_pct: 25
-  - delay: !input step_delay
+# Steps 24–25: white outro flashes at 75%
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 255, 255]
+    brightness_pct: 75
+- delay: !input step_delay
 
-  - service: light.turn_on
-    target:
-      entity_id: !input target_light
-    data:
-      rgb_color: [255, 255, 255]
-      brightness_pct: 25
-  - delay: !input step_delay
+- service: light.turn_on
+  target:
+    entity_id: !input target_light
+  data:
+    rgb_color: [255, 255, 255]
+    brightness_pct: 75
+- delay: !input step_delay
 
   - service: scene.turn_on
     target:
