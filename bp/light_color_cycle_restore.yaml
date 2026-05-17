@@ -1,6 +1,6 @@
 blueprint:
   name: Light color cycle and restore previous state
-  description: Snapshot a light, run a color cycle, optionally raise brightness during the alert, then restore the previous state.
+  description: Snapshot a light, run a color cycle at 75% brightness, then restore the previous state.
   domain: automation
 
   input:
@@ -32,16 +32,6 @@ blueprint:
           step: 1
           mode: slider
 
-    min_brightness_pct:
-      name: Minimum brightness during alert
-      default: 40
-      selector:
-        number:
-          min: 1
-          max: 100
-          step: 1
-          unit_of_measurement: "%"
-
     step_delay:
       name: Delay between colors
       default:
@@ -59,10 +49,6 @@ trigger:
     entity_id: !input trigger_entity
     to: !input trigger_to_state
 
-variables:
-  light_entity: !input target_light
-  min_brightness_pct: !input min_brightness_pct
-
 action:
   - service: scene.create
     data:
@@ -78,11 +64,7 @@ action:
             entity_id: !input target_light
           data:
             rgb_color: [0, 255, 0]
-            brightness_pct: >
-              {{ [
-                ((state_attr(light_entity, 'brightness') | int(0)) / 255 * 100),
-                min_brightness_pct
-              ] | max | round(0) }}
+            brightness_pct: 75
 
         - delay: !input step_delay
 
@@ -91,11 +73,7 @@ action:
             entity_id: !input target_light
           data:
             rgb_color: [255, 180, 0]
-            brightness_pct: >
-              {{ [
-                ((state_attr(light_entity, 'brightness') | int(0)) / 255 * 100),
-                min_brightness_pct
-              ] | max | round(0) }}
+            brightness_pct: 75
 
         - delay: !input step_delay
 
@@ -104,11 +82,7 @@ action:
             entity_id: !input target_light
           data:
             rgb_color: [0, 120, 255]
-            brightness_pct: >
-              {{ [
-                ((state_attr(light_entity, 'brightness') | int(0)) / 255 * 100),
-                min_brightness_pct
-              ] | max | round(0) }}
+            brightness_pct: 75
 
         - delay: !input step_delay
 
